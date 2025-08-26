@@ -336,8 +336,17 @@ let
         ProjectData = Table.PromoteHeaders(ProjectSource, [PromoteAllScalars=true]),
         
         // STEP 2: Normalize addresses
-        WithNormalizedAddresses = Table.AddColumn(
+        // First, ensure we don't have conflicting column names
+        PotentialConflicts = {"Geocoding_Query", "Full_Address", "Norm_Address", "Norm_City", "Norm_State", "Norm_ZIP", 
+                              "Latitude", "Longitude", "Final_GEOID_Tract", "Is_DAC", "DAC_Priority_Tier"},
+        ExistingConflicts = List.Select(PotentialConflicts, each Table.HasColumns(ProjectData, {_})),
+        CleanProjectData = if List.Count(ExistingConflicts) > 0 then
+            Table.RemoveColumns(ProjectData, ExistingConflicts)
+        else
             ProjectData,
+            
+        WithNormalizedAddresses = Table.AddColumn(
+            CleanProjectData,
             "AddressNormalization",
             each NormalizeAddress([Address], [City], [State], [ZIP]),
             type record
