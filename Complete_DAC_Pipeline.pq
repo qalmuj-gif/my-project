@@ -62,15 +62,27 @@ let
         else 
             CleanZip,
             
-        // Create standardized full address
-        FullAddress = StandardizedAddress & ", " & CleanCity & ", " & CleanState & " " & ZipCode,
+        // Clean any existing + characters that might interfere with URL encoding
+        CleanedAddress = Text.Replace(StandardizedAddress, "+", " "),
+        CleanedCity = Text.Replace(CleanCity, "+", " "),
         
-        // Create URL-encoded geocoding query
-        GeocodingQuery = Text.Replace(FullAddress, " ", "+")
+        // Create standardized full address
+        FullAddress = CleanedAddress & ", " & CleanedCity & ", " & CleanState & " " & ZipCode,
+        
+        // Create properly URL-encoded geocoding query
+        // First clean up multiple spaces, then URL encode
+        CleanFullAddress = Text.Trim(
+            Text.Replace(
+                Text.Replace(
+                    Text.Replace(FullAddress, "  ", " "),
+                    "  ", " "),
+                "  ", " ")
+        ),
+        GeocodingQuery = Uri.EscapeDataString(CleanFullAddress)
     in
         [
-            Normalized_Address = StandardizedAddress,
-            Normalized_City = CleanCity,
+            Normalized_Address = CleanedAddress,
+            Normalized_City = CleanedCity,
             Normalized_State = CleanState,
             Normalized_ZIP = ZipCode,
             Full_Address = FullAddress,
