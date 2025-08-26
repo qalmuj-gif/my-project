@@ -361,7 +361,7 @@ let
             each 
                 let
                     Query = [Geocoding_Query],
-                    CachedResult = List.SelectRows(CacheLookup, each [Geocoding_Query] = Query),
+                    CachedResult = List.Select(CacheLookup, each [Geocoding_Query] = Query),
                     UseCache = Config[UseCache] and List.Count(CachedResult) > 0,
                     
                     Result = if UseCache then

@@ -113,7 +113,7 @@ let
         // Function to get cached result or geocode new
         GetGeocode = (query as text) as record =>
         let
-            CachedResult = List.SelectRows(CacheLookup, each [Geocoding_Query] = query),
+            CachedResult = List.Select(CacheLookup, each [Geocoding_Query] = query),
             UseCache = List.Count(CachedResult) > 0,
             
             Result = if UseCache then
