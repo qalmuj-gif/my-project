@@ -1,0 +1,53 @@
+{
+  "pipeline_info": {
+    "name": "NY DAC Geocoding Pipeline",
+    "version": "1.0",
+    "description": "Power Query-driven Excel pipeline for geocoding project addresses and joining with NY DAC 2023 data",
+    "created_date": "2025-08-26T18:59:45.191827"
+  },
+  "api_config": {
+    "census_api": {
+      "base_url": "https://geocoding.geo.census.gov/geocoder/geographies/address",
+      "benchmark": "2020",
+      "vintage": "2020",
+      "max_retries": 3,
+      "retry_delay_seconds": 2
+    },
+    "socrata_api": {
+      "base_url": "https://data.ny.gov/resource/",
+      "dataset_id": "dac-2023-final",
+      "format": "json"
+    }
+  },
+  "cache_config": {
+    "table_name": "GeocodeCache",
+    "expiry_days": 30,
+    "enabled": true
+  },
+  "geocoding_config": {
+    "spatial_fallback": {
+      "enabled": true,
+      "buffer_meters": 100
+    },
+    "address_normalization": {
+      "enabled": true,
+      "standardize_abbreviations": true
+    }
+  },
+  "output_config": {
+    "required_fields": [
+      "DAC_Flag",
+      "Combined_Score_Formatted",
+      "Burden_Score_Percentile",
+      "State_Rank",
+      "ROS_Rank",
+      "Geocoding_Status"
+    ],
+    "formatting": {
+      "dac_flag_colors": {
+        "yes": "Red",
+        "no": "Green"
+      }
+    }
+  }
+}

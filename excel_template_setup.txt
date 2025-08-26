@@ -1,0 +1,53 @@
+
+# Excel Template Setup Instructions
+================================
+
+## 1. Create Named Ranges
+
+### Project Addresses Table
+- Create a table named "ProjectAddresses" with columns:
+  - Address (text)
+  - City (text) 
+  - State (text)
+  - ZIP (text)
+
+### Geocode Cache Table
+- Create a table named "GeocodeCache" with columns:
+  - NormalizedAddress (text)
+  - Latitude (number)
+  - Longitude (number)
+  - GEOID (text)
+  - Confidence (text)
+  - CachedDate (datetime)
+
+## 2. Power Query Setup
+
+1. Open Excel
+2. Go to Data > Get Data > From Other Sources > Blank Query
+3. In the Advanced Editor, paste the M code from dac_geocoding_pipeline.py
+4. Name the query "DAC_Geocoding_Pipeline"
+5. Load to worksheet
+
+## 3. Refresh Configuration
+
+- Set up automatic refresh (Data > Refresh All)
+- Configure refresh intervals as needed
+- Cache will automatically expire after 30 days
+
+## 4. Output Columns
+
+The pipeline will generate:
+- DAC_Flag: One-click YES/NO indicator
+- Combined_Score_Formatted: Formatted combined score
+- Burden_Score_Percentile: Burden score with percentile
+- State_Rank: State ranking
+- ROS_Rank: Rest of State ranking
+- Geocoding_Status: Success/failure status
+- All original DAC data fields
+
+## 5. Performance Tips
+
+- Cache geocodes for faster subsequent runs
+- Use spatial fallback for failed addresses
+- Monitor API rate limits
+- Consider batch processing for large datasets
