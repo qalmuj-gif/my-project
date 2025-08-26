@@ -69,16 +69,15 @@ let
         // Create standardized full address
         FullAddress = CleanedAddress & ", " & CleanedCity & ", " & CleanState & " " & ZipCode,
         
-        // Create properly URL-encoded geocoding query
-        // First clean up multiple spaces, then URL encode
-        CleanFullAddress = Text.Trim(
+        // Create clean geocoding query (NOT URL encoded yet - that happens in GeocodeAddress function)
+        // First clean up multiple spaces
+        GeocodingQuery = Text.Trim(
             Text.Replace(
                 Text.Replace(
                     Text.Replace(FullAddress, "  ", " "),
                     "  ", " "),
                 "  ", " ")
-        ),
-        GeocodingQuery = Uri.EscapeDataString(CleanFullAddress)
+        )
     in
         [
             Normalized_Address = CleanedAddress,
