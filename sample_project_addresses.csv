@@ -1,0 +1,16 @@
+Project_ID,Project_Name,Address,City,State,ZIP,Priority
+PROJ001,Solar Installation Alpha,123 Main Street,Albany,NY,12210,High
+PROJ002,Wind Farm Beta,456 Broadway,Buffalo,NY,14202,Medium
+PROJ003,Energy Efficiency Gamma,789 State Street,Rochester,NY,14614,High
+PROJ004,Green Building Delta,321 Park Avenue,Syracuse,NY,13202,Medium
+PROJ005,Renewable Storage Epsilon,654 First Street,Ithaca,NY,14850,Low
+PROJ006,Community Solar Zeta,987 Oak Street,Utica,NY,13501,High
+PROJ007,Heat Pump Installation Eta,147 Elm Street,Watertown,NY,13601,Medium
+PROJ008,EV Charging Theta,258 Maple Avenue,Plattsburgh,NY,12901,High
+PROJ009,Weatherization Iota,369 Pine Street,Binghamton,NY,13901,Low
+PROJ010,Solar Canopy Kappa,741 Cedar Lane,Oneonta,NY,13820,Medium
+PROJ011,Geothermal Lambda,852 Birch Road,Glens Falls,NY,12801,High
+PROJ012,Battery Storage Mu,963 Spruce Drive,Cortland,NY,13045,Medium
+PROJ013,Efficiency Retrofit Nu,159 Willow Way,Fulton,NY,13069,Low
+PROJ014,Wind Turbine Xi,267 Poplar Place,Oswego,NY,13126,High
+PROJ015,Solar Farm Omicron,348 Chestnut Circle,Geneva,NY,14456,Medium

@@ -1,0 +1,27 @@
+# Excel Dashboard Template
+# This file represents the structure for creating a comprehensive DAC analysis dashboard
+
+# Worksheet 1: Main Data
+# - Contains the complete pipeline output
+# - All project data with DAC analysis
+# - Source for all other worksheets
+
+# Worksheet 2: Executive Summary
+# - High-level metrics and KPIs
+# - Charts showing DAC vs non-DAC distribution
+# - Investment priority breakdown
+
+# Worksheet 3: Geographic Analysis
+# - Projects by county and region
+# - DAC concentration mapping
+# - Rural vs urban distribution
+
+# Worksheet 4: Data Quality Report
+# - Geocoding success rates
+# - Missing data analysis
+# - Recommendations for data improvement
+
+# Worksheet 5: Investment Recommendations
+# - Projects sorted by priority tier
+# - Budget allocation suggestions
+# - Community impact projections
